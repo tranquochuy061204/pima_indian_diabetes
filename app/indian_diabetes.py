@@ -133,15 +133,8 @@ def predict_single(input_data, tree):
 def predict(X, tree):
     return np.array([predict_single(sample, tree) for sample in X])
 
-tree = build_tree(X_train, y_train, max_depth=4)
+tree = build_tree(X, y, max_depth=4)
 
-
-y_pred = predict(X_test, tree)
-
-print(y_pred)
-
-accuracy = np.sum(y_pred == y_test) / len(y_test)
-print(f"Độ chính xác trên tập test: {accuracy:.2f}")
 
 import pickle
 

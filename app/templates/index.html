@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dự đoán bệnh tiểu đường</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+     
+    <form method="POST" class="form">
+        <h1>Dự đoán bệnh tiểu đường</h1>
+        <div class="input-container">
+            <div class="block-1">
+                <label for="Pregnancies">Số lần mang thai:</label><input type="number" step="any" name="Pregnancies" required><br>
+                <label for="Glucose">Mức độ Glucose (đường huyết):</label><input type="number" step="any" name="Glucose" required><br>
+                <label for="BloodPressure">Huyết áp:</label><input type="number" step="any" name="BloodPressure" required><br>
+                <label for="SkinThickness">Độ dày da:</label><input type="number" step="any" name="SkinThickness" required><br>
+            </div>
+            <div class="block-2">
+                <label for="Insulin">Mức độ Insulin:</label><input type="number" step="any" name="Insulin" required><br>
+                <label for="BMI">Chỉ số BMI:</label><input type="number" step="any" name="BMI" required><br>
+                <label for="DiabetesPedigreeFunction">Chức năng di truyền bệnh tiểu đường:</label><input type="number" step="any" name="DiabetesPedigreeFunction" required><br>
+                <label for="Age">Tuổi:</label><input type="number" step="any" name="Age" required><br>
+            </div>
+        </div>
+
+
+            {% if prediction %}
+                <h2 class="result">Kết quả: {{ prediction }}</h2>
+            {% endif %}
+      
+
+        <button type="submit">Dự đoán</button>
+    </form>
+
+</body>
+</html>

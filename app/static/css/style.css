@@ -1,0 +1,103 @@
+/* Đặt nền, font chữ, và màu sắc tổng thể cho trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Khung chính chứa form */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 1000px !important;
+    height: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+label {
+    font-weight: bold;
+    font-size: 15px;
+    color: #555;
+    display: block;
+}
+
+
+.input-container {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Tiêu đề của form */
+h1 {
+    color: #4CAF50;
+    font-size: 24px;
+    
+}
+
+/* Định dạng cho label */
+
+
+/* Định dạng cho các input */
+input[type="number"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.block-1, .block-2 {
+    width: 1000px;
+}
+
+.result {
+    height: 5%;
+}
+
+
+/* Button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hiệu ứng khi hover vào button */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Hiển thị kết quả dự đoán */
+h2 {
+    margin-top: 20px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Thêm không gian cho các phần tử */
+form, h1, h2 {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}

@@ -81,11 +81,11 @@ def information_gain_ratio(X_column, y):
 
 class Node:
     def __init__(self, feature=None, threshold=None, left=None, right=None, value=None):
-        self.feature = feature        # Chỉ số cột
-        self.threshold = threshold    # Ngưỡng phân chia
-        self.left = left              # Nhánh trái
-        self.right = right            # Nhánh phải
-        self.value = value            # Nếu là lá, giá trị phân lớp
+        self.feature = feature        
+        self.threshold = threshold    
+        self.left = left             
+        self.right = right            
+        self.value = value           
 
     def is_leaf_node(self):
         return self.value is not None

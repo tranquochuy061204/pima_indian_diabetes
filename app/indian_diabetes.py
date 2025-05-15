@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.impute import KNNImputer
 import math
 
-data = pd.read_csv('./diabetes.csv')
+data = pd.read_csv("./diabetes.csv")
 data = data.drop_duplicates()
 
 data.head()
@@ -54,28 +54,36 @@ def entropy(y):
 
 
 def information_gain_ratio(X_column, y):
-    threshold = np.median(X_column)
+    percentiles = [25, 50, 75]
+    thresholds = np.percentile(X_column, percentiles)
 
-    left_idx = X_column <= threshold
-    right_idx = X_column > threshold
-
-
+    best_gain_ratio = -1
+    best_threshold = None
     ent_before = entropy(y)
 
+    for threshold in thresholds:
+        left_idx = X_column <= threshold
+        right_idx = X_column > threshold
 
-    left_y, right_y = y[left_idx], y[right_idx]
-    ent_after = (len(left_y)/len(y)) * entropy(left_y) + (len(right_y)/len(y)) * entropy(right_y)
+        if np.sum(left_idx) == 0 or np.sum(right_idx) == 0:
+            continue
 
+        left_y, right_y = y[left_idx], y[right_idx]
 
-    info_gain = ent_before - ent_after
+        ent_after = (len(left_y) / len(y)) * entropy(left_y) + (len(right_y) / len(y)) * entropy(right_y)
+        info_gain = ent_before - ent_after
 
+        p_left = len(left_y) / len(y)
+        p_right = len(right_y) / len(y)
+        split_info = - (p_left * math.log2(p_left) + p_right * math.log2(p_right)) if p_left > 0 and p_right > 0 else 1e-10
 
-    p_left = len(left_y)/len(y)
-    p_right = len(right_y)/len(y)
-    split_info = - (p_left * math.log2(p_left) + p_right * math.log2(p_right)) if p_left > 0 and p_right > 0 else 1e-10
+        gain_ratio = info_gain / split_info
 
-    return info_gain / split_info, threshold
+        if gain_ratio > best_gain_ratio:
+            best_gain_ratio = gain_ratio
+            best_threshold = threshold
 
+    return best_gain_ratio, best_threshold
 
 
 
